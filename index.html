@@ -4,6 +4,10 @@
   <title>Mini Anket</title>
   <meta charset="UTF-8">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: sans-serif;
       text-align: center;
@@ -16,6 +20,7 @@
       font-size: 30px;
       font-weight: bold;
       margin-bottom: 10px;
+      line-height: 1.2;
     }
 
     button {
@@ -38,12 +43,18 @@
       margin-left: 40px;
     }
 
-    #result {
+    #result-container {
       margin-top: 30px;
+      height: 40px; /* Sabit yükseklik: hiçbir şey kaymaz */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #result {
       font-size: 30px;
       font-weight: bold;
       color: darkblue;
-      min-height: 40px;
       opacity: 0;
       transform: translateY(10px);
       transition: opacity 0.5s ease, transform 0.5s ease;
@@ -76,10 +87,13 @@
 </head>
 <body>
   <h2>Yarın benimle buluşmak ister misin?</h2>
+
   <button onclick="showMessage('yes')" class="yes-btn">Evet</button>
   <button onclick="showMessage('no')" class="no-btn">Hayır</button>
 
-  <div id="result"></div>
+  <div id="result-container">
+    <div id="result"></div>
+  </div>
 
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
     <img src="IMG_0944.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
@@ -104,19 +118,19 @@
     function showMessage(answer) {
       const messageBox = document.getElementById('result');
 
-      // Yazıyı ayarla
+      // Yazıyı değiştir
       if (answer === 'yes') {
         messageBox.textContent = "O zaman beni saat 12’de ara.";
       } else {
         messageBox.textContent = "Sen kaybedersin.";
       }
 
-      // Efekti sıfırla ve tekrar uygula
+      // Efekti tetikle
       messageBox.classList.remove('visible');
-      void messageBox.offsetWidth; // force reflow
+      void messageBox.offsetWidth; // Reflow
       messageBox.classList.add('visible');
 
-      // Emoji efekti
+      // Emoji fışkırtma
       for (let i = 0; i < 20; i++) {
         const emoji = document.createElement('div');
         emoji.className = 'emoji';
