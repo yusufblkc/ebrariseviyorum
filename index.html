@@ -16,6 +16,8 @@
     h2 {
       margin-top: 40px;
       color: #333;
+      font-weight: 700;
+      font-size: 33px;
     }
 
     button {
@@ -51,18 +53,19 @@
     }
 
     .image-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
       padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
     }
 
     .image-grid img {
       width: 100%;
+      max-width: 500px;
       height: auto;
       border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     a.call-button {
@@ -82,7 +85,6 @@
       transform: scale(1.05);
     }
 
-    /* Animasyon kutusu */
     .animation {
       font-size: 48px;
       position: fixed;
