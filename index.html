@@ -5,25 +5,38 @@
   <title>Mini Anket</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
+    html, body {
       margin: 0;
       padding: 0;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden; /* Kaydırma engellendi */
+      height: 100vh;     /* Ekran boyutu kadar */
       background-color: #f7f7f7;
     }
 
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+    }
+
     h2 {
-      margin-top: 40px;
+      margin: 20px 10px 0;
       color: #333;
       font-weight: 700;
       font-size: 33px;
     }
 
+    .buttons {
+      margin: 10px 0;
+    }
+
     button {
       padding: 15px 30px;
-      font-size: 24px;
-      margin: 20px 10px;
+      font-size: 22px;
+      margin: 0 10px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -47,40 +60,43 @@
     }
 
     #result {
-      margin-top: 40px;
-      font-size: 28px;
+      font-size: 22px;
       color: darkblue;
+      margin: 8px;
+      height: 30px;
     }
 
     .image-grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 5px;
+      width: 100%;
+      max-width: 500px;
+      padding: 0 10px;
+      box-sizing: border-box;
     }
 
     .image-grid img {
       width: 100%;
-      max-width: 500px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
     }
 
-    a.call-button {
+    .call-button {
       display: inline-block;
-      margin: 20px auto 40px;
-      padding: 12px 24px;
+      padding: 10px 20px;
       background-color: #007bff;
       color: white;
       text-decoration: none;
       border-radius: 6px;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      margin-bottom: 8px;
       transition: all 0.3s ease;
     }
 
-    a.call-button:hover {
+    .call-button:hover {
       background-color: #0056b3;
       transform: scale(1.05);
     }
@@ -136,8 +152,11 @@
 </head>
 <body>
   <h2>Yarın benimle buluşmak ister misin?</h2>
-  <button onclick="showMessage('yes')">Evet</button>
-  <button onclick="showMessage('no')">Hayır</button>
+
+  <div class="buttons">
+    <button onclick="showMessage('yes')">Evet</button>
+    <button onclick="showMessage('no')">Hayır</button>
+  </div>
 
   <p id="result"></p>
 
