@@ -1,171 +1,108 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Mini Anket</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
   <style>
-    html, body {
+    body {
+      font-family: sans-serif;
+      text-align: center;
       margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #f7f7f7;
-      height: 100%;
+      padding-top: 40px;
       overflow: hidden;
     }
 
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-    }
-
     h2 {
-      margin: 10px;
-      color: #333;
-      font-weight: 700;
-      font-size: 33px;
-    }
-
-    .buttons {
-      margin: 5px 0;
+      font-size: 30px;
+      font-weight: bold;
     }
 
     button {
-      padding: 12px 24px;
-      font-size: 20px;
-      margin: 0 8px;
+      padding: 15px 30px;
+      font-size: 24px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-    }
-
-    button:first-of-type {
-      background-color: #28a745;
+    .yes-btn {
+      background-color: green;
       color: white;
     }
 
-    button:last-of-type {
-      background-color: #dc3545;
+    .no-btn {
+      background-color: red;
       color: white;
+      margin-left: 40px;
     }
 
-    #result {
-      font-size: 20px;
-      color: darkblue;
-      min-height: 24px;
-      margin-top: 4px;
+    .heart {
+      position: absolute;
+      animation: floatUp 2s ease-out forwards;
+      font-size: 24px;
+      opacity: 0;
     }
 
-    .image-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px;
-      padding: 6px 12px;
-      box-sizing: border-box;
-      width: 100%;
-      max-width: 500px;
-      flex-grow: 1;
-    }
-
-    .image-grid img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .call-button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      margin-bottom: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .call-button:hover {
-      background-color: #0056b3;
-      transform: scale(1.05);
-    }
-
-    .animation {
-      font-size: 48px;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: pop 1s ease-out forwards;
-      z-index: 1000;
-      pointer-events: none;
-    }
-
-    @keyframes pop {
+    @keyframes floatUp {
       0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
-      }
-      50% {
+        transform: translateY(0);
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1.2);
       }
       100% {
+        transform: translateY(-200px);
         opacity: 0;
-        transform: translate(-50%, -50%) scale(1);
       }
     }
   </style>
   <script>
     function showMessage(answer) {
       const messageBox = document.getElementById('result');
+      const heartContainer = document.createElement('div');
+
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.innerText = answer === 'yes' ? '❤️' : '💔';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 2000);
+      }
+
       if (answer === 'yes') {
         messageBox.innerText = "O zaman beni saat 12’de ara.";
-        showAnimation("❤️");
       } else {
         messageBox.innerText = "Sen kaybedersin.";
-        showAnimation("💔😠");
       }
-    }
-
-    function showAnimation(emoji) {
-      const anim = document.createElement('div');
-      anim.className = 'animation';
-      anim.innerText = emoji;
-      document.body.appendChild(anim);
-      setTimeout(() => {
-        anim.remove();
-      }, 1000);
     }
   </script>
 </head>
 <body>
   <h2>Yarın benimle buluşmak ister misin?</h2>
+  <button onclick="showMessage('yes')" class="yes-btn">Evet</button>
+  <button onclick="showMessage('no')" class="no-btn">Hayır</button>
+  <p id="result" style="margin-top: 60px; font-size: 30px; color: darkblue;"></p>
 
-  <div class="buttons">
-    <button onclick="showMessage('yes')">Evet</button>
-    <button onclick="showMessage('no')">Hayır</button>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+    <img src="IMG_0944.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
+    <img src="IMG_2674.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
+    <img src="IMG_2720.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
+    <img src="IMG_2726.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
   </div>
 
-  <p id="result"></p>
-
-  <div class="image-grid">
-    <img src="IMG_0944.jpeg" alt="Fotoğraf 1">
-    <img src="IMG_2674.jpeg" alt="Fotoğraf 2">
-    <img src="IMG_2720.jpeg" alt="Fotoğraf 3">
-    <img src="IMG_2726.jpeg" alt="Fotoğraf 4">
-  </div>
-
-  <a class="call-button" href="tel:+905557565864">SEVGİLİNİ ARA</a>
+  <a href="tel:+905557565864" style="
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.1rem;">
+    SEVGİLİNİ ARA
+  </a>
 </body>
 </html>
