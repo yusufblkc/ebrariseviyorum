@@ -17,7 +17,7 @@
     }
 
     h2 {
-      font-size: 31px; /* 1 punto büyütüldü */
+      font-size: 31px; /* Sabit büyüklük */
       font-weight: bold;
       margin-bottom: 10px;
       line-height: 1.2;
@@ -49,7 +49,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px; /* ✅ Fotoğraflarla yazı arasına boşluk */
+      margin-bottom: 20px; /* Yazıyla fotoğraflar arasında boşluk */
     }
 
     #result {
@@ -68,8 +68,8 @@
 
     .emoji {
       position: absolute;
-      animation: floatUp 2s ease-out forwards;
-      font-size: 24px;
+      animation: floatUp 4s ease-out forwards; /* Daha uzun süre */
+      font-size: 40px; /* Daha büyük emoji */
       opacity: 0;
       pointer-events: none;
     }
@@ -139,7 +139,7 @@
 
         setTimeout(() => {
           emoji.remove();
-        }, 2000);
+        }, 4000); // Daha uzun süre
       }
     }
   </script>
