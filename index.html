@@ -12,9 +12,15 @@
       overflow: hidden;
     }
 
-    h2 {
+    h2,
+    #result {
       font-size: 30px;
       font-weight: bold;
+      font-family: sans-serif;
+      line-height: 1.2;
+    }
+
+    h2 {
       margin-bottom: 10px;
     }
 
@@ -40,7 +46,6 @@
 
     #result {
       margin-top: 30px;
-      font-size: 30px;
       color: darkblue;
       min-height: 40px;
       opacity: 0;
@@ -56,6 +61,7 @@
       animation: floatUp 2s ease-out forwards;
       font-size: 24px;
       opacity: 0;
+      pointer-events: none;
     }
 
     @keyframes floatUp {
@@ -69,47 +75,47 @@
       }
     }
   </style>
-<script>
-  function showMessage(answer) {
-    const messageBox = document.getElementById('result');
+  <script>
+    function showMessage(answer) {
+      const messageBox = document.getElementById('result');
 
-    // Önce görünürlüğü sıfırla (opacity sıfırlansın ki animasyon yeniden tetiklensin)
-    messageBox.classList.remove("visible");
+      // Görünürlüğü sıfırla
+      messageBox.classList.remove("visible");
 
-    // Yazıyı güncelle
-    if (answer === 'yes') {
-      messageBox.innerText = "O zaman beni saat 12’de ara.";
-    } else {
-      messageBox.innerText = "Sen kaybedersin.";
-    }
+      // Yazıyı belirle
+      if (answer === 'yes') {
+        messageBox.innerText = "O zaman beni saat 12’de ara.";
+      } else {
+        messageBox.innerText = "Sen kaybedersin.";
+      }
 
-    // Kısa bir gecikmeden sonra görünür yap (CSS animasyonu çalışsın diye)
-    setTimeout(() => {
-      messageBox.classList.add("visible");
-    }, 10);
-
-    // Emoji efekti
-    for (let i = 0; i < 20; i++) {
-      const emoji = document.createElement('div');
-      emoji.className = 'emoji';
-      emoji.style.left = Math.random() * 100 + 'vw';
-      emoji.style.top = Math.random() * 100 + 'vh';
-      emoji.innerText = answer === 'yes' ? '❤️' : '😠';
-      document.body.appendChild(emoji);
-
+      // Animasyonu yeniden tetiklemek için kısa gecikmeyle tekrar görünür yap
       setTimeout(() => {
-        emoji.remove();
-      }, 2000);
+        messageBox.classList.add("visible");
+      }, 10);
+
+      // Emoji efektleri
+      for (let i = 0; i < 20; i++) {
+        const emoji = document.createElement('div');
+        emoji.className = 'emoji';
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.top = Math.random() * 100 + 'vh';
+        emoji.innerText = answer === 'yes' ? '❤️' : '😠';
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 2000);
+      }
     }
-  }
-</script>
+  </script>
 </head>
 <body>
   <h2>Yarın benimle buluşmak ister misin?</h2>
   <button onclick="showMessage('yes')" class="yes-btn">Evet</button>
   <button onclick="showMessage('no')" class="no-btn">Hayır</button>
 
-  <!-- Yazı alanı başlangıçta boş ama yer kaplar -->
+  <!-- Boş ama yer kaplayan yazı alanı -->
   <p id="result"></p>
 
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
