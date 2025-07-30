@@ -8,13 +8,14 @@
       font-family: sans-serif;
       text-align: center;
       margin: 0;
-      padding-top: 10px; /* üst boşluk azaltıldı */
+      padding-top: 10px;
+      overflow: hidden;
     }
 
     h2 {
       font-size: 30px;
       font-weight: bold;
-      margin-bottom: 10px; /* başlık ile buton arası daraltıldı */
+      margin-bottom: 10px;
     }
 
     button {
@@ -23,6 +24,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      font-family: inherit;
     }
 
     .yes-btn {
@@ -35,6 +37,37 @@
       color: white;
       margin-left: 40px;
     }
+
+    #result {
+      margin-top: 30px;
+      font-size: 30px;
+      color: darkblue;
+      min-height: 40px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .visible {
+      opacity: 1;
+    }
+
+    .emoji {
+      position: absolute;
+      animation: floatUp 2s ease-out forwards;
+      font-size: 24px;
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px);
+        opacity: 0;
+      }
+    }
   </style>
   <script>
     function showMessage(answer) {
@@ -44,6 +77,20 @@
       } else {
         messageBox.innerText = "Sen kaybedersin.";
       }
+      messageBox.classList.add("visible");
+
+      for (let i = 0; i < 20; i++) {
+        const emoji = document.createElement('div');
+        emoji.className = 'emoji';
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.top = Math.random() * 100 + 'vh';
+        emoji.innerText = answer === 'yes' ? '❤️' : '😠';
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 2000);
+      }
     }
   </script>
 </head>
@@ -51,7 +98,9 @@
   <h2>Yarın benimle buluşmak ister misin?</h2>
   <button onclick="showMessage('yes')" class="yes-btn">Evet</button>
   <button onclick="showMessage('no')" class="no-btn">Hayır</button>
-  <p id="result" style="margin-top: 30px; font-size: 30px; color: darkblue;"></p> <!-- alt boşluk azaltıldı -->
+
+  <!-- Yazı alanı başlangıçta boş ama yer kaplar -->
+  <p id="result"></p>
 
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
     <img src="IMG_0944.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
