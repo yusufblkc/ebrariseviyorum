@@ -9,34 +9,33 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      overflow: hidden; /* Kaydırma engellendi */
-      height: 100vh;     /* Ekran boyutu kadar */
       background-color: #f7f7f7;
+      height: 100%;
+      overflow: hidden;
     }
 
     body {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: center;
-      text-align: center;
+      justify-content: space-between;
     }
 
     h2 {
-      margin: 20px 10px 0;
+      margin: 10px;
       color: #333;
       font-weight: 700;
       font-size: 33px;
     }
 
     .buttons {
-      margin: 10px 0;
+      margin: 5px 0;
     }
 
     button {
-      padding: 15px 30px;
-      font-size: 22px;
-      margin: 0 10px;
+      padding: 12px 24px;
+      font-size: 20px;
+      margin: 0 8px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -60,21 +59,21 @@
     }
 
     #result {
-      font-size: 22px;
+      font-size: 20px;
       color: darkblue;
-      margin: 8px;
-      height: 30px;
+      min-height: 24px;
+      margin-top: 4px;
     }
 
     .image-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 5px;
+      gap: 4px;
+      padding: 6px 12px;
+      box-sizing: border-box;
       width: 100%;
       max-width: 500px;
-      padding: 0 10px;
-      box-sizing: border-box;
+      flex-grow: 1;
     }
 
     .image-grid img {
