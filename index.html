@@ -69,30 +69,40 @@
       }
     }
   </style>
-  <script>
-    function showMessage(answer) {
-      const messageBox = document.getElementById('result');
-      if (answer === 'yes') {
-        messageBox.innerText = "O zaman beni saat 12’de ara.";
-      } else {
-        messageBox.innerText = "Sen kaybedersin.";
-      }
-      messageBox.classList.add("visible");
+<script>
+  function showMessage(answer) {
+    const messageBox = document.getElementById('result');
 
-      for (let i = 0; i < 20; i++) {
-        const emoji = document.createElement('div');
-        emoji.className = 'emoji';
-        emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.top = Math.random() * 100 + 'vh';
-        emoji.innerText = answer === 'yes' ? '❤️' : '😠';
-        document.body.appendChild(emoji);
+    // Önce görünürlüğü sıfırla (opacity sıfırlansın ki animasyon yeniden tetiklensin)
+    messageBox.classList.remove("visible");
 
-        setTimeout(() => {
-          emoji.remove();
-        }, 2000);
-      }
+    // Yazıyı güncelle
+    if (answer === 'yes') {
+      messageBox.innerText = "O zaman beni saat 12’de ara.";
+    } else {
+      messageBox.innerText = "Sen kaybedersin.";
     }
-  </script>
+
+    // Kısa bir gecikmeden sonra görünür yap (CSS animasyonu çalışsın diye)
+    setTimeout(() => {
+      messageBox.classList.add("visible");
+    }, 10);
+
+    // Emoji efekti
+    for (let i = 0; i < 20; i++) {
+      const emoji = document.createElement('div');
+      emoji.className = 'emoji';
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.top = Math.random() * 100 + 'vh';
+      emoji.innerText = answer === 'yes' ? '❤️' : '😠';
+      document.body.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 2000);
+    }
+  }
+</script>
 </head>
 <body>
   <h2>Yarın benimle buluşmak ister misin?</h2>
