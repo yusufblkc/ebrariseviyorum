@@ -8,13 +8,13 @@
       font-family: sans-serif;
       text-align: center;
       margin: 0;
-      padding-top: 40px;
-      overflow: hidden;
+      padding-top: 10px; /* üst boşluk azaltıldı */
     }
 
     h2 {
       font-size: 30px;
       font-weight: bold;
+      margin-bottom: 10px; /* başlık ile buton arası daraltıldı */
     }
 
     button {
@@ -35,43 +35,10 @@
       color: white;
       margin-left: 40px;
     }
-
-    .heart {
-      position: absolute;
-      animation: floatUp 2s ease-out forwards;
-      font-size: 24px;
-      opacity: 0;
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-200px);
-        opacity: 0;
-      }
-    }
   </style>
   <script>
     function showMessage(answer) {
       const messageBox = document.getElementById('result');
-      const heartContainer = document.createElement('div');
-
-      for (let i = 0; i < 20; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * 100 + 'vh';
-        heart.innerText = answer === 'yes' ? '❤️' : '💔';
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 2000);
-      }
-
       if (answer === 'yes') {
         messageBox.innerText = "O zaman beni saat 12’de ara.";
       } else {
@@ -84,7 +51,7 @@
   <h2>Yarın benimle buluşmak ister misin?</h2>
   <button onclick="showMessage('yes')" class="yes-btn">Evet</button>
   <button onclick="showMessage('no')" class="no-btn">Hayır</button>
-  <p id="result" style="margin-top: 60px; font-size: 30px; color: darkblue;"></p>
+  <p id="result" style="margin-top: 30px; font-size: 30px; color: darkblue;"></p> <!-- alt boşluk azaltıldı -->
 
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
     <img src="IMG_0944.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
