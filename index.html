@@ -97,15 +97,18 @@
       border-radius: 8px;
     }
 
-    .call-button {
+    .call-button, .whatsapp-button {
       display: inline-block;
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: green;
       color: white;
       text-decoration: none;
       border-radius: 6px;
       font-size: 1.1rem;
+    }
+
+    .call-button {
+      background-color: green;
     }
 
     .whatsapp-section {
@@ -120,13 +123,7 @@
     }
 
     .whatsapp-button {
-      display: inline-block;
-      padding: 10px 20px;
       background-color: #25D366;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 1.1rem;
     }
   </style>
 </head>
@@ -147,4 +144,45 @@
     <img src="IMG_2726.jpeg">
   </div>
 
-  <a href="tel:+905557565864" class="call-button">SEVG
+  <a href="tel:+905557565864" class="call-button">📞 SEVGİLİNİ ARAMAK İÇİN TIKLA</a>
+
+  <div class="whatsapp-section">
+    <h3>SEVGİLİNE MESAJ ATMAK İÇİN TIKLA</h3>
+    <a
+      href="https://wa.me/905557565864?text=Seni%20Seviyorum"
+      target="_blank"
+      class="whatsapp-button">
+      💬 WHATSAPP'TAN MESAJ AT
+    </a>
+  </div>
+
+  <script>
+    function showMessage(answer) {
+      const messageBox = document.getElementById('result');
+
+      if (answer === 'yes') {
+        messageBox.textContent = "O zaman beni saat 14'te ara.";
+      } else {
+        messageBox.textContent = "Sen kaybedersin.";
+      }
+
+      messageBox.classList.remove('visible');
+      void messageBox.offsetWidth;
+      messageBox.classList.add('visible');
+
+      for (let i = 0; i < 20; i++) {
+        const emoji = document.createElement('div');
+        emoji.className = 'emoji';
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.top = Math.random() * 100 + 'vh';
+        emoji.innerText = answer === 'yes' ? '❤️' : '😠';
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 4000);
+      }
+    }
+  </script>
+</body>
+</html>
