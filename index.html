@@ -17,7 +17,7 @@
     }
 
     h2 {
-      font-size: 31px; /* Sabit büyüklük */
+      font-size: 31px;
       font-weight: bold;
       margin-bottom: 10px;
       line-height: 1.2;
@@ -49,7 +49,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px; /* Yazıyla fotoğraflar arasında boşluk */
+      margin-bottom: 20px;
     }
 
     #result {
@@ -68,8 +68,8 @@
 
     .emoji {
       position: absolute;
-      animation: floatUp 4s ease-out forwards; /* Daha uzun süre */
-      font-size: 40px; /* Daha büyük emoji */
+      animation: floatUp 4s ease-out forwards;
+      font-size: 40px;
       opacity: 0;
       pointer-events: none;
     }
@@ -84,6 +84,50 @@
         opacity: 0;
       }
     }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .call-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+    }
+
+    .whatsapp-section {
+      margin-top: 40px;
+    }
+
+    .whatsapp-section h3 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .whatsapp-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 <body>
@@ -96,52 +140,11 @@
     <div id="result"></div>
   </div>
 
-  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-    <img src="IMG_0944.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
-    <img src="IMG_2674.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
-    <img src="IMG_2720.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
-    <img src="IMG_2726.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
+  <div class="image-grid">
+    <img src="IMG_0944.jpeg">
+    <img src="IMG_2674.jpeg">
+    <img src="IMG_2720.jpeg">
+    <img src="IMG_2726.jpeg">
   </div>
 
-  <a href="tel:+905557565864" style="
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: green;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 1.1rem;">
-    SEVGİLİNİ ARAMAK İÇİN TIKLA
-  </a>
-
-  <script>
-    function showMessage(answer) {
-      const messageBox = document.getElementById('result');
-
-      if (answer === 'yes') {
-        messageBox.textContent = "O zaman beni saat 14'te ara.";
-      } else {
-        messageBox.textContent = "Sen kaybedersin.";
-      }
-
-      messageBox.classList.remove('visible');
-      void messageBox.offsetWidth;
-      messageBox.classList.add('visible');
-
-      for (let i = 0; i < 20; i++) {
-        const emoji = document.createElement('div');
-        emoji.className = 'emoji';
-        emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.top = Math.random() * 100 + 'vh';
-        emoji.innerText = answer === 'yes' ? '❤️' : '😠';
-        document.body.appendChild(emoji);
-
-        setTimeout(() => {
-          emoji.remove();
-        }, 4000); // Daha uzun süre
-      }
-    }
-  </script>
-</body>
-</html>
+  <a href="tel:+905557565864" class="call-button">SEVG
