@@ -14,7 +14,7 @@
       margin: 0;
       padding-top: 10px;
       overflow: hidden;
-      background: linear-gradient(135deg, #fcb6f3, #c0a9ff); /* PEMBE-MOR GEÇİŞ */
+      background: linear-gradient(135deg, #fcb6f3, #c0a9ff);
       min-height: 100vh;
     }
 
@@ -32,6 +32,7 @@
       border-radius: 8px;
       cursor: pointer;
       font-family: inherit;
+      margin: 10px;
     }
 
     .yes-btn {
@@ -42,7 +43,6 @@
     .no-btn {
       background-color: red;
       color: white;
-      margin-left: 40px;
     }
 
     #result-container {
@@ -112,8 +112,10 @@
 <body>
   <h2>Yarın buluşmada film izleyelim mi?🍿</h2>
 
-  <button onclick="showMessage('yes')" class="yes-btn">Evet</button>
-  <button onclick="showMessage('no')" class="no-btn">Hayır</button>
+  <button onclick="showMessage('btn1')" class="yes-btn">Ördeklerin Göçü</button>
+  <button onclick="showMessage('btn2')" class="yes-btn">Vizontele</button>
+  <button onclick="showMessage('btn3')" class="no-btn">Shrek</button>
+  <button onclick="showMessage('btn4')" class="no-btn">Sil Baştan</button>
 
   <div id="result-container">
     <div id="result"></div>
@@ -141,27 +143,43 @@
   <script>
     function showMessage(answer) {
       const messageBox = document.getElementById('result');
+      let text = '';
+      let emoji = '';
 
-      if (answer === 'yes') {
-        messageBox.textContent = "O zaman hangi filmi istediğini mesaj at.";
-      } else {
-        messageBox.textContent = "Sen ne anlarsın lan gofik.";
+      switch (answer) {
+        case 'btn1':
+          text = "DOĞRU SEÇİM🥳";
+          emoji = '🎉';
+          break;
+        case 'btn2':
+          text = "Evet Ördeklerin Göçü’nden sonra bunu izleyebiliriz";
+          emoji = '🎬';
+          break;
+        case 'btn3':
+          text = "Zevksiz bir gofiksin";
+          emoji = '💩';
+          break;
+        case 'btn4':
+          text = "GERİ ZEKÂLI";
+          emoji = '🤡';
+          break;
       }
 
+      messageBox.textContent = text;
       messageBox.classList.remove('visible');
       void messageBox.offsetWidth;
       messageBox.classList.add('visible');
 
       for (let i = 0; i < 20; i++) {
-        const emoji = document.createElement('div');
-        emoji.className = 'emoji';
-        emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.top = Math.random() * 100 + 'vh';
-        emoji.innerText = answer === 'yes' ? '❤️' : '😠';
-        document.body.appendChild(emoji);
+        const floatEmoji = document.createElement('div');
+        floatEmoji.className = 'emoji';
+        floatEmoji.style.left = Math.random() * 100 + 'vw';
+        floatEmoji.style.top = Math.random() * 100 + 'vh';
+        floatEmoji.innerText = emoji;
+        document.body.appendChild(floatEmoji);
 
         setTimeout(() => {
-          emoji.remove();
+          floatEmoji.remove();
         }, 4000);
       }
     }
