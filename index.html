@@ -173,8 +173,8 @@
       for (let i = 0; i < 20; i++) {
         const floatEmoji = document.createElement('div');
         floatEmoji.className = 'emoji';
-        floatEmoji.style.left = Math.random() * 100 + 'vw';
-        floatEmoji.style.top = Math.random() * 100 + 'vh';
+        floatEmoji.style.left = Math.random() * (window.innerWidth - 40) + 'px';
+        floatEmoji.style.top = Math.random() * (window.innerHeight - 40) + 'px';
         floatEmoji.innerText = emoji;
         document.body.appendChild(floatEmoji);
 
