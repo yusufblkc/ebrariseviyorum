@@ -3,31 +3,21 @@
 <head>
   <title>Mini Anket</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       box-sizing: border-box;
     }
 
-    html, body {
+    body {
       font-family: sans-serif;
       text-align: center;
       margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden; /* Kaydırmayı engeller */
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
       padding-top: 10px;
+      overflow: hidden; /* Sayfa aşağı kaymasın */
     }
 
     h2 {
-      font-size: 32px;
+      font-size: 31px;
       font-weight: bold;
       margin-bottom: 10px;
       line-height: 1.2;
@@ -54,12 +44,12 @@
     }
 
     #result-container {
-      margin-top: 20px;
+      margin-top: 30px;
       height: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     #result {
@@ -95,23 +85,16 @@
       }
     }
 
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      width: 90%;
-      margin-top: 10px;
+    .bottom-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0;
     }
 
-    .image-grid img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .call-button {
+    .call-btn, .whatsapp-btn {
       display: inline-block;
-      margin-top: 10px;
       padding: 10px 20px;
       background-color: green;
       color: white;
@@ -120,57 +103,31 @@
       font-size: 1.1rem;
     }
 
-    .whatsapp-button {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 12px 20px;
+    .whatsapp-btn {
       background-color: #25D366;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .content-wrapper {
-      max-height: 100vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
   </style>
 </head>
 <body>
-  <div class="content-wrapper">
+  <h2>Bugün benimle buluşmak ister misin?</h2>
 
-    <h2>Bugün benimle buluşmak ister misin?</h2>
+  <button onclick="showMessage('yes')" class="yes-btn">Evet</button>
+  <button onclick="showMessage('no')" class="no-btn">Hayır</button>
 
-    <div>
-      <button onclick="showMessage('yes')" class="yes-btn">Evet</button>
-      <button onclick="showMessage('no')" class="no-btn">Hayır</button>
-    </div>
+  <div id="result-container">
+    <div id="result"></div>
+  </div>
 
-    <div id="result-container">
-      <div id="result"></div>
-    </div>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+    <img src="IMG_0944.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
+    <img src="IMG_2674.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
+    <img src="IMG_2720.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
+    <img src="IMG_2726.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
+  </div>
 
-    <div class="image-grid">
-      <img src="IMG_0944.jpeg">
-      <img src="IMG_2674.jpeg">
-      <img src="IMG_2720.jpeg">
-      <img src="IMG_2726.jpeg">
-    </div>
-
-    <a href="tel:+905557565864" class="call-button">📞 SEVGİLİNİ ARAMAK İÇİN TIKLA</a>
-
-    <a
-      href="https://wa.me/905557565864?text=Seni%20Seviyorum"
-      target="_blank"
-      class="whatsapp-button">
-      💬 SEVGİLİNE MESAJ ATMAK İÇİN TIKLA
-    </a>
-
+  <div class="bottom-buttons">
+    <a href="tel:+905557565864" class="call-btn">📞 SEVGİLİNİ ARAMAK İÇİN TIKLA</a>
+    <a href="https://wa.me/905557565864?text=Seni%20Seviyorum" class="whatsapp-btn">💬 SEVGİLİNE MESAJ ATMAK İÇİN TIKLA</a>
   </div>
 
   <script>
