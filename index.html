@@ -15,7 +15,7 @@
       padding-top: 10px;
       overflow: hidden;
       background: linear-gradient(135deg, #f8bbd0, #8e24aa);
-min-height: 100vh;
+      min-height: 100vh;
     }
 
     h2 {
@@ -86,6 +86,22 @@ min-height: 100vh;
         opacity: 0;
       }
     }
+
+    /* WhatsApp butonu stili */
+    .whatsapp-btn {
+      display: inline-block;
+      margin: 20px auto 30px auto;
+      padding: 10px 20px;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      max-width: 280px;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 <body>
@@ -117,6 +133,11 @@ min-height: 100vh;
     SEVGİLİNİ ARAMAK İÇİN TIKLA
   </a>
 
+  <!-- WhatsApp Butonu -->
+  <a href="https://wa.me/905557565864?text=Seni%20Seviyorum" target="_blank" class="whatsapp-btn">
+    💬 SEVGİLİNE MESAJ ATMAK İÇİN TIKLA
+  </a>
+
   <script>
     function showMessage(answer) {
       const messageBox = document.getElementById('result');
@@ -141,7 +162,7 @@ min-height: 100vh;
 
         setTimeout(() => {
           emoji.remove();
-        }, 4000); // Daha uzun süre
+        }, 4000);
       }
     }
   </script>
