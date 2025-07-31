@@ -14,12 +14,11 @@
       margin: 0;
       padding-top: 10px;
       overflow: hidden;
-      background: linear-gradient(135deg, #f8bbd0, #8e24aa);
-      min-height: 100vh;
+      background: linear-gradient(135deg, #fceabb, #f8b500); /* Yumuşak arka plan geçişi */
     }
 
     h2 {
-      font-size: 31px; /* Sabit büyüklük */
+      font-size: 31px;
       font-weight: bold;
       margin-bottom: 10px;
       line-height: 1.2;
@@ -51,7 +50,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px; /* Yazıyla fotoğraflar arasında boşluk */
+      margin-bottom: 20px;
     }
 
     #result {
@@ -70,8 +69,8 @@
 
     .emoji {
       position: absolute;
-      animation: floatUp 4s ease-out forwards; /* Daha uzun süre */
-      font-size: 40px; /* Daha büyük emoji */
+      animation: floatUp 4s ease-out forwards;
+      font-size: 40px;
       opacity: 0;
       pointer-events: none;
     }
@@ -86,33 +85,10 @@
         opacity: 0;
       }
     }
-
-    /* Arama ve WhatsApp butonlarını aynı boyutta yapalım */
-    a.call-btn,
-    a.whatsapp-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 30px;  /* Aynı yatay ve dikey padding */
-      background-color: green;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-      max-width: 280px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    /* WhatsApp butonu farklı renk */
-    a.whatsapp-btn {
-      background-color: #25D366;
-    }
   </style>
 </head>
 <body>
-  <h2>Yarın film izlemek ister misin?</h2>
+  <h2>Bugün benimle buluşmak ister misin?</h2>
 
   <button onclick="showMessage('yes')" class="yes-btn">Evet</button>
   <button onclick="showMessage('no')" class="no-btn">Hayır</button>
@@ -128,33 +104,50 @@
     <img src="IMG_2726.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
   </div>
 
-  <a href="tel:+905557565864" class="call-btn">📞 SEVGİLİNİ ARAMAK İÇİN TIKLA</a>
+  <!-- Arama Butonu -->
+  <a href="tel:+905557565864" style="
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-family: sans-serif;
+    width: 80%;
+    max-width: 300px;
+  ">
+    📞 SEVGİLİNİ ARAMAK İÇİN TIKLA
+  </a>
 
   <!-- WhatsApp Butonu -->
-<a href="https://wa.me/905557565864?text=Tamamen%20kendi%20özgür%20irademle%20%E2%80%9C%C3%96rdeklerin%20G%C3%B6%C3%A7%C3%BC%E2%80%9D%20adl%C4%B1%20filmi%20izlemek%20istiyorum"
-   target="_blank"
-   style="
-     display: inline-block;
-     margin-top: 15px;
-     padding: 10px 20px;
-     background-color: #25D366;
-     color: white;
-     text-decoration: none;
-     border-radius: 6px;
-     font-size: 1.1rem;
-     font-family: sans-serif;
-   ">
-  💬 SEVGİLİNE MESAJ ATMAK İÇİN TIKLA
-</a>
+  <a href="https://wa.me/905557565864?text=Tamamen%20kendi%20özgür%20irademle%20%E2%80%9C%C3%96rdeklerin%20G%C3%B6%C3%A7%C3%BC%E2%80%9D%20adl%C4%B1%20filmi%20izlemek%20istiyorum"
+     target="_blank"
+     style="
+       display: inline-block;
+       margin-top: 15px;
+       padding: 10px 20px;
+       background-color: #25D366;
+       color: white;
+       text-decoration: none;
+       border-radius: 6px;
+       font-size: 1.1rem;
+       font-family: sans-serif;
+       width: 80%;
+       max-width: 300px;
+     ">
+    💬 SEVGİLİNE MESAJ ATMAK İÇİN TIKLA
+  </a>
 
   <script>
     function showMessage(answer) {
       const messageBox = document.getElementById('result');
 
       if (answer === 'yes') {
-        messageBox.textContent = "O zaman ne izlemek istediğini mesaj at.";
+        messageBox.textContent = "O zaman beni saat 14'te ara.";
       } else {
-        messageBox.textContent = "Sen ne anlarsın lan gofik.";
+        messageBox.textContent = "Sen kaybedersin.";
       }
 
       messageBox.classList.remove('visible');
