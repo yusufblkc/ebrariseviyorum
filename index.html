@@ -13,11 +13,13 @@
       text-align: center;
       margin: 0;
       padding-top: 10px;
-      overflow: hidden; /* Sayfa aşağı kaymasın */
+      overflow: hidden;
+      background: linear-gradient(135deg, #f8bbd0, #8e24aa);
+      min-height: 100vh;
     }
 
     h2 {
-      font-size: 31px;
+      font-size: 31px; /* Sabit büyüklük */
       font-weight: bold;
       margin-bottom: 10px;
       line-height: 1.2;
@@ -49,7 +51,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 20px; /* Yazıyla fotoğraflar arasında boşluk */
     }
 
     #result {
@@ -68,8 +70,8 @@
 
     .emoji {
       position: absolute;
-      animation: floatUp 4s ease-out forwards;
-      font-size: 40px;
+      animation: floatUp 4s ease-out forwards; /* Daha uzun süre */
+      font-size: 40px; /* Daha büyük emoji */
       opacity: 0;
       pointer-events: none;
     }
@@ -83,28 +85,6 @@
         transform: translateY(-200px);
         opacity: 0;
       }
-    }
-
-    .bottom-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .call-btn, .whatsapp-btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: green;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 1.1rem;
-    }
-
-    .whatsapp-btn {
-      background-color: #25D366;
     }
   </style>
 </head>
@@ -125,10 +105,17 @@
     <img src="IMG_2726.jpeg" style="width: 100%; height: auto; border-radius: 8px;">
   </div>
 
-  <div class="bottom-buttons">
-    <a href="tel:+905557565864" class="call-btn">📞 SEVGİLİNİ ARAMAK İÇİN TIKLA</a>
-    <a href="https://wa.me/905557565864?text=Seni%20Seviyorum" class="whatsapp-btn">💬 SEVGİLİNE MESAJ ATMAK İÇİN TIKLA</a>
-  </div>
+  <a href="tel:+905557565864" style="
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.1rem;">
+    SEVGİLİNİ ARAMAK İÇİN TIKLA
+  </a>
 
   <script>
     function showMessage(answer) {
@@ -154,7 +141,7 @@
 
         setTimeout(() => {
           emoji.remove();
-        }, 4000);
+        }, 4000); /* Daha uzun süre */
       }
     }
   </script>
