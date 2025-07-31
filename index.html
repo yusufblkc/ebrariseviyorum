@@ -14,7 +14,7 @@
       margin: 0;
       padding-top: 10px;
       overflow: hidden;
-      background: linear-gradient(135deg, #fceabb, #f8b500); /* Yumuşak arka plan geçişi */
+      background: linear-gradient(135deg, #fcb6f3, #c0a9ff); /* PEMBE-MOR GEÇİŞ */
     }
 
     h2 {
@@ -85,6 +85,27 @@
         opacity: 0;
       }
     }
+
+    .custom-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      font-family: sans-serif;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .call-btn {
+      background-color: green;
+    }
+
+    .whatsapp-btn {
+      background-color: #25D366;
+    }
   </style>
 </head>
 <body>
@@ -105,38 +126,14 @@
   </div>
 
   <!-- Arama Butonu -->
-  <a href="tel:+905557565864" style="
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: green;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    font-family: sans-serif;
-    width: 80%;
-    max-width: 300px;
-  ">
+  <a href="tel:+905557565864" class="custom-button call-btn">
     📞 SEVGİLİNİ ARAMAK İÇİN TIKLA
   </a>
 
   <!-- WhatsApp Butonu -->
   <a href="https://wa.me/905557565864?text=Tamamen%20kendi%20özgür%20irademle%20%E2%80%9C%C3%96rdeklerin%20G%C3%B6%C3%A7%C3%BC%E2%80%9D%20adl%C4%B1%20filmi%20izlemek%20istiyorum"
      target="_blank"
-     style="
-       display: inline-block;
-       margin-top: 15px;
-       padding: 10px 20px;
-       background-color: #25D366;
-       color: white;
-       text-decoration: none;
-       border-radius: 6px;
-       font-size: 1.1rem;
-       font-family: sans-serif;
-       width: 80%;
-       max-width: 300px;
-     ">
+     class="custom-button whatsapp-btn">
     💬 SEVGİLİNE MESAJ ATMAK İÇİN TIKLA
   </a>
 
